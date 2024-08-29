@@ -121,7 +121,7 @@ export const use4Bytes = (
   const fourBytesKey = assetsURLPrefix !== undefined ? rawFourBytes : null;
 
   const fetcher = fourBytesFetcher(assetsURLPrefix!);
-  const { data, error } = useSWRImmutable(["4bytes", fourBytesKey], fetcher);
+  const { data, error } = useSWRImmutable<FourBytesEntry | null | undefined>(fetcher);
   return sourcifyFourBytes ? sourcifyFourBytes : error ? undefined : data;
 };
 
