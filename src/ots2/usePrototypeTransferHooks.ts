@@ -220,11 +220,8 @@ export const useTokenBalance = (
   address: ChecksummedAddress | undefined,
   tokenAddress: ChecksummedAddress | undefined,
 ): bigint | null | undefined => {
-  const fetcher = erc20BalanceFetcher(provider);
-  const { data, error } = useSWR(
-    ["erc20balance", address, tokenAddress],
-    fetcher,
-  );
+  const fetcher = providerFetcher(provider);
+  const { data, error } = useSWR(["erc20balance", address],fetcher);
   if (error) {
     return undefined;
   }
