@@ -309,7 +309,7 @@ export const useETHUSDOracle = (
     config.priceOracleInfo ??
     defaultPriceOracleInfo.get(provider._network.chainId);
   const fetcher = ethUSDFetcher(provider, priceOracleInfo);
-  const { data, error } = useSWRImmutable(ethUSDFetcherKey(blockTag), fetcher);
+  const { data, error } = useSWRImmutable(fetcher);
   const decimals = BigInt(
     priceOracleInfo?.nativeTokenPrice?.ethUSDOracleDecimals ?? 8,
   );
@@ -368,7 +368,7 @@ export const useETHUSDRawOracle = (
 ): any | undefined => {
   const { config } = useContext(RuntimeContext);
   const fetcher = ethUSDFetcher(provider, config.priceOracleInfo);
-  const { data, error } = useSWRImmutable(ethUSDFetcherKey(blockTag), fetcher);
+  const { data, error } = useSWRImmutable(fetcher);
   if (error) {
     return undefined;
   }
@@ -408,7 +408,7 @@ export const useFastGasRawOracle = (
   blockTag: BlockTag | undefined,
 ): any | undefined => {
   const fetcher = fastGasFetcher(provider);
-  const { data, error } = useSWRImmutable(fastGasFetcherKey(blockTag), fetcher);
+  const { data, error } = useSWRImmutable(fetcher);
   if (error) {
     return undefined;
   }
