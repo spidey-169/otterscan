@@ -1,15 +1,17 @@
-import { ReportHandler } from "web-vitals";
+// reportWebVitals.ts
+import type { MetricType } from "web-vitals";
 
-const reportWebVitals = (onPerfEntry?: ReportHandler) => {
-  if (onPerfEntry && onPerfEntry instanceof Function) {
-    import("web-vitals").then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(onPerfEntry);
-      getFID(onPerfEntry);
-      getFCP(onPerfEntry);
-      getLCP(onPerfEntry);
-      getTTFB(onPerfEntry);
+const reportWebVitals = (onPerfEntry?: (metric: MetricType) => void) => {
+  if (onPerfEntry && typeof onPerfEntry === "function") {
+    import("web-vitals").then((webVitals) => {
+      webVitals.onCLS(onPerfEntry);
+      webVitals.onFID(onPerfEntry);
+      webVitals.onFCP(onPerfEntry);
+      webVitals.onLCP(onPerfEntry);
+      webVitals.onTTFB(onPerfEntry);
     });
   }
 };
 
 export default reportWebVitals;
+
