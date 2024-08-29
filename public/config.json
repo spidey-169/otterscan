@@ -1,4 +1,4 @@
 {
-  "erigonURL": "http://localhost:8545",
+  "erigonURL": "https://otterscan.mainnet.testinprod.io/",
   "assetsURLPrefix": "http://localhost:5175"
 }
