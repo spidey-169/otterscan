@@ -222,8 +222,7 @@ export const useSourcifyMetadata = (
       ? null
       : ["sourcify", address, chainId, sourcifySource];
   const fetcher = sourcifyFetcher(sourcifySources);
-  const { data, error } = useSWRImmutable<Match | null | undefined>(
-    metadataURL,
+  const { data, error } = useSWRImmutable(
     fetcher,
   );
   if (error) {
