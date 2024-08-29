@@ -899,7 +899,6 @@ export const useTokenMetadata = (
 ): TokenMeta | null | undefined => {
   const fetcher = tokenMetadataFetcher(provider);
   const { data, error } = useSWRImmutable(
-    address !== undefined ? ["tokenmeta", address] : null,
     fetcher,
   );
   if (error) {
@@ -934,6 +933,6 @@ export const useL1Epoch = (
   const key = isOptimisticChain(provider._network.chainId)
     ? ["l1epoch", blockTag]
     : null;
-  const { data, error } = useSWRImmutable(key, fetcher);
+  const { data, error } = useSWRImmutable(fetcher);
   return error ? undefined : data;
 };
