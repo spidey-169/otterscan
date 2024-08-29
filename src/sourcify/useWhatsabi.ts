@@ -15,7 +15,6 @@ export const useWhatsabiMetadata = (
   const fetcher = whatsabiFetcher(provider, assetsURLPrefix);
   const key = ["whatsabi", address, chainId];
   const { data, error } = useSWRImmutable<Match | null | undefined>(
-    key,
     fetcher,
   );
   if (error) {
